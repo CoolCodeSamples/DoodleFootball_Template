@@ -1,18 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Football : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static Football instance;
+
+    private Vector3 startPos;
+    private Rigidbody2D rb;
+
+    public void Reset()
     {
-        
+        transform.position = startPos;
+        rb.velocity = Vector2.zero;
+        rb.angularVelocity = 0;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        instance = this;
+        rb = GetComponent<Rigidbody2D>();
+        startPos = transform.position;
     }
 }

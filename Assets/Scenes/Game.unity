@@ -686,6 +686,7 @@ GameObject:
   - component: {fileID: 666640566}
   - component: {fileID: 666640569}
   - component: {fileID: 666640568}
+  - component: {fileID: 666640570}
   m_Layer: 0
   m_Name: Football
   m_TagString: Untagged
@@ -796,7 +797,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 666640563}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 00c7df86d83e143bc8cffa0847c3cb0b, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -822,6 +823,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.085
+--- !u!114 &666640570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 666640563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20f7e7317c9884165ad2dc27027755fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &698015670
 GameObject:
   m_ObjectHideFlags: 0
@@ -1544,6 +1557,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8425294451000025879, guid: 5e8f50746e642451195a457587219f27, type: 3}
+      propertyPath: enemyScoreText
+      value: 
+      objectReference: {fileID: 763302890}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2351,6 +2368,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8425294451000025879, guid: 5e8f50746e642451195a457587219f27, type: 3}
+      propertyPath: enemyScoreText
+      value: 
+      objectReference: {fileID: 292586354}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

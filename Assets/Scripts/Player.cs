@@ -7,10 +7,18 @@ public class Player : MonoBehaviour
     [SerializeField] private float jumpSpeed = 5;
     [SerializeField] private Transform groundCheck;
     private Rigidbody2D rb;
+    private Vector2 startPos;
+
+    public void Reset()
+    {
+        transform.position = startPos;
+        rb.velocity = Vector2.zero;
+    }
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        startPos = transform.position;
     }
 
     private void Update()
