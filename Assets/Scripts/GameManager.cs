@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
 
     private void CountDown()
     {
-        if (timer > 0)
+        if(timer > 0)
         {
             timer--;
             timerText.text = Helpers.FormatTimer(timer);
