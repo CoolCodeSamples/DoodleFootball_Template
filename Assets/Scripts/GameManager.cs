@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Player playerRight;
     [SerializeField] private GameObject goalBanner;
     [SerializeField] private TMP_Text timerText;
+    [SerializeField] private GameObject timeUpText;
     private int timer = 60;
 
     public void Goal()
@@ -17,10 +19,24 @@ public class GameManager : MonoBehaviour
         Invoke(nameof(Reset), 1);
     }
 
+    private void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
     private void CountDown()
     {
-        timer--;
-        timerText.text = Helpers.FormatTimer(timer);
+        if (timer > 0)
+        {
+            timer--;
+            timerText.text = Helpers.FormatTimer(timer);
+        }
+        else
+        {
+            CancelInvoke(nameof(CountDown));
+            timeUpText.SetActive(true);
+            Invoke(nameof(Restart), 2);
+        }
     }
 
     private void Reset()
