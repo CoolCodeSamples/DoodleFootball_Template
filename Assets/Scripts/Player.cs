@@ -2,10 +2,13 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public Transform enemyGoal;
+
     [SerializeField] private int playerNumber;
     [SerializeField] private float speed = 7;
     [SerializeField] private float jumpSpeed = 5;
     [SerializeField] private Transform groundCheck;
+
     private Rigidbody2D rb;
     private Vector2 startPos;
 
