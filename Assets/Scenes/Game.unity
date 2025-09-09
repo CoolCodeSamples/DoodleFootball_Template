@@ -423,6 +423,7 @@ MonoBehaviour:
   powerUps:
   - {fileID: 4479161700933945502, guid: c84030a12bf814cb8b49cbf835fe264a, type: 3}
   - {fileID: 4479161700933945502, guid: 647a6f99163aa4ed5a3b7ac2e4c2a40d, type: 3}
+  - {fileID: 4479161700933945502, guid: 69fc4d961f107407883f19dc11e99182, type: 3}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -885,6 +886,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireImage: {fileID: 2009642467}
+  roboImage: {fileID: 21300000, guid: 424a537cccfa041d39e7fb67cdd8048d, type: 3}
 --- !u!1 &698015670
 GameObject:
   m_ObjectHideFlags: 0

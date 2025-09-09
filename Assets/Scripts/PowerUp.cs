@@ -4,6 +4,7 @@ public enum PowerUpType
 {
     FireBall,
     Freeze,
+    RoboBall,
 }
 
 public class PowerUp : MonoBehaviour
@@ -21,6 +22,9 @@ public class PowerUp : MonoBehaviour
                     break;
                 case PowerUpType.Freeze:
                     player.enemyPlayer.Freeze();
+                    break;
+                case PowerUpType.RoboBall:
+                    player.ActivateRoboBall();
                     break;
                 default:
                     break;

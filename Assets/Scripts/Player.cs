@@ -11,9 +11,18 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private GameObject iceCube;
     private bool canMove = true;
+    private bool hasRoboBall;
 
     private Rigidbody2D rb;
     private Vector2 startPos;
+
+    public void ActivateRoboBall()
+    {
+        CancelInvoke(nameof(DeactivateRoboBall));
+        hasRoboBall = true;
+        Football.instance.ToggleRoboImage(true);
+        Invoke(nameof(DeactivateRoboBall), 5);
+    }
 
     public void Freeze()
     {
@@ -23,17 +32,24 @@ public class Player : MonoBehaviour
         Invoke(nameof(Unfreeze), 5);
     }
 
+    public void Reset()
+    {
+        DeactivateRoboBall();
+        Unfreeze();
+        transform.position = startPos;
+        rb.velocity = Vector2.zero;
+    }
+
+    private void DeactivateRoboBall()
+    {
+        hasRoboBall = false;
+        Football.instance.ToggleRoboImage(false);
+    }
+
     private void Unfreeze()
     {
         canMove = true;
         iceCube.SetActive(false);
-    }
-
-    public void Reset()
-    {
-        Unfreeze();
-        transform.position = startPos;
-        rb.velocity = Vector2.zero;
     }
 
     private void Start()
@@ -44,7 +60,13 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if(canMove)
+        Vector2 input = new Vector2(Input.GetAxis("Horizontal" + playerNumber), Input.GetAxis("Vertical" + playerNumber));
+
+        if (hasRoboBall)
+        {
+            Football.instance.RoboMovement(input);
+        }
+        else if(canMove)
         {
             RaycastHit2D hit = Physics2D.Raycast(groundCheck.position, Vector2.down, 0.1f);
 
@@ -54,7 +76,7 @@ public class Player : MonoBehaviour
                 ySpeed = jumpSpeed;
             }
 
-            rb.velocity = new Vector2(speed * Input.GetAxis("Horizontal" + playerNumber), ySpeed);
+            rb.velocity = new Vector2(speed * input.x, ySpeed);
         }
     }
 }

@@ -5,9 +5,29 @@ public class Football : MonoBehaviour
     public static Football instance;
 
     [SerializeField] private GameObject fireImage;
+    [SerializeField] private Sprite roboImage;
 
+    private Sprite footballImage;
     private Vector3 startPos;
     private Rigidbody2D rb;
+    private SpriteRenderer render;
+
+    public void ToggleRoboImage(bool isActive)
+    {
+        if(isActive)
+        {
+            render.sprite = roboImage;
+        }
+        else
+        {
+            render.sprite = footballImage;
+        }
+    }
+
+    public void RoboMovement(Vector3 direction)
+    {
+        rb.velocity = direction * 5;
+    }
 
     public void FireBall(Transform target)
     {
@@ -26,6 +46,8 @@ public class Football : MonoBehaviour
     private void Start()
     {
         instance = this;
+        render = GetComponent<SpriteRenderer>();
+        footballImage = render.sprite;
         rb = GetComponent<Rigidbody2D>();
         startPos = transform.position;
     }
